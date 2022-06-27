@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.formacionbdi.microservicios.app.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.app.commons.controllers.CommonControler;
-import com.formacionbdi.microservicios.app.usuarios.models.entity.Alumno;
 import com.formacionbdi.microservicios.app.usuarios.services.IAlumnoService;
 
 @RestController
