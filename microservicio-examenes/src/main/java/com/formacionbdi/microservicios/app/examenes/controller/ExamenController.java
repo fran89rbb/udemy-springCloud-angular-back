@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formacionbdi.microservicios.app.commons.controllers.CommonControler;
-import com.formacionbdi.microservicios.app.examenes.models.entity.Examen;
-import com.formacionbdi.microservicios.app.examenes.models.entity.Pregunta;
+import com.formacionbdi.microservicios.app.commons.examenes.models.entity.Examen;
+import com.formacionbdi.microservicios.app.commons.examenes.models.entity.Pregunta;
 import com.formacionbdi.microservicios.app.examenes.services.IExamenService;
 
 @RestController
