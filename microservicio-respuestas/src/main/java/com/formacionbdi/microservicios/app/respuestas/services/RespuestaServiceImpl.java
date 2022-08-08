@@ -16,8 +16,13 @@ public class RespuestaServiceImpl implements IRespuestaService {
 	@Override
 	@Transactional
 	public Iterable<Respuesta> saveAll(Iterable<Respuesta> respuestas) {
-		// TODO Auto-generated method stub
 		return repository.saveAll(respuestas);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<Respuesta> findByByAlumnoByExamen(Long alumnoId, Long examenId) {
+		return repository.findByByAlumnoByExamen(alumnoId, examenId);
 	}
 
 }
