@@ -8,4 +8,5 @@ public interface IRespuestaService {
 	
 	public Iterable<Respuesta> findByByAlumnoByExamen(Long alumnoId, Long examenId);
 
+	public Iterable<Long> findExamenesIdsConRespuestaByAlumno(Long alumnoId);
 }

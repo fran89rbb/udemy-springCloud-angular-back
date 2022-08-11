@@ -31,5 +31,12 @@ public class RespuestaController {
 		
 		return ResponseEntity.ok(respuestas);
 	}
+	
+	@GetMapping("/alumno/{alumnoId}/examenes-respondidos")
+	public ResponseEntity<?> ObtenerExamenesIdsConRespuestaByAlumno(@PathVariable Long alumnoId){
+		Iterable<Long> examenesId = service.findExamenesIdsConRespuestaByAlumno(alumnoId);
+		
+		return ResponseEntity.ok(examenesId);
+	}
 
 }
