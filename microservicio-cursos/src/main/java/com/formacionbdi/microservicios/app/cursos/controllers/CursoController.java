@@ -22,6 +22,7 @@ import com.formacionbdi.microservicios.app.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.app.commons.controllers.CommonControler;
 import com.formacionbdi.microservicios.app.commons.examenes.models.entity.Examen;
 import com.formacionbdi.microservicios.app.cursos.models.entity.Curso;
+import com.formacionbdi.microservicios.app.cursos.models.entity.CursoAlumno;
 import com.formacionbdi.microservicios.app.cursos.services.ICursoService;
 
 @RestController
@@ -66,7 +67,14 @@ public class CursoController extends CommonControler<Curso, ICursoService>{
 		}
 		
 		Curso cursoUpdate = cursoDb.get();
-		alumnos.forEach(a -> cursoUpdate.addAlumno(a));
+		alumnos.forEach(a -> {
+			CursoAlumno cursoAlumno = new CursoAlumno();
+			cursoAlumno.setAlumnoId(a.getId());
+			cursoAlumno.setCurso(cursoUpdate);
+			cursoUpdate.addCursoAlumnos(cursoAlumno);
+		});
+		
+		
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(cursoUpdate));
 	}
@@ -80,7 +88,9 @@ public class CursoController extends CommonControler<Curso, ICursoService>{
 		}
 		
 		Curso cursoUpdate = cursoDb.get();
-		cursoUpdate.removeAlumno(alumno);
+		CursoAlumno cursoAlumno = new CursoAlumno();
+		cursoAlumno.setAlumnoId(alumno.getId());
+		cursoUpdate.removeCursoAlumnos(cursoAlumno);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(cursoUpdate));
 	}

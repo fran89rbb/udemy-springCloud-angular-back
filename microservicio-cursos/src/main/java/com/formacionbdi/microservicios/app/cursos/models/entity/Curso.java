@@ -40,7 +40,7 @@ public class Curso {
 	private Date createAt;
 
 	@JsonIgnoreProperties(value = { "curso" }, allowSetters = true)
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "curso", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CursoAlumno> cursoAlumnos;
 
 	// @OneToMany(fetch = FetchType.LAZY)
@@ -124,11 +124,11 @@ public class Curso {
 	public void removeExamen(Examen examen) {
 		this.examenes.remove(examen);
 	}
-	
+
 	public void addCursoAlumnos(CursoAlumno cursoAlumno) {
 		this.cursoAlumnos.add(cursoAlumno);
 	}
-	
+
 	public void removeCursoAlumnos(CursoAlumno cursoAlumno) {
 		this.cursoAlumnos.remove(cursoAlumno);
 	}
