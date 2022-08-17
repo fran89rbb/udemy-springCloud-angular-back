@@ -1,6 +1,7 @@
 package com.formacionbdi.microservicios.app.usuarios.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -27,6 +28,11 @@ import com.formacionbdi.microservicios.app.usuarios.services.IAlumnoService;
 
 @RestController
 public class AlumnoControler extends CommonControler<Alumno, IAlumnoService>{
+	
+	@GetMapping("/alumnos-por-curso")
+	public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam Iterable<Long> ids){
+		return ResponseEntity.ok(service.findAllById(ids));
+	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> editar(@Valid @RequestBody Alumno alumno, BindingResult result, @PathVariable Long id){

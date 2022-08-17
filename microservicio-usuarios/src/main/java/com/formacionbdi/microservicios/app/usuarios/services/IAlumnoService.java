@@ -8,5 +8,7 @@ import com.formacionbdi.microservicios.app.commons.services.ICommonService;
 public interface IAlumnoService extends ICommonService<Alumno>{
 	
 	public List<Alumno> findByNombreOrApellido(String termino);
+	
+	public Iterable<Alumno> findAllById(Iterable<Long> ids);
 
 }
